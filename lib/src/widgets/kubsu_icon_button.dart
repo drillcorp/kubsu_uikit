@@ -18,21 +18,24 @@ class KubsuIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox.square(
-      dimension: size,
-      child: InkWell(
-        onTap: delegate.onTap,
-        splashColor: delegate.splashColor,
-        highlightColor: delegate.highlightColor,
-        borderRadius: shape == BoxShape.circle ? BorderRadius.circular(100) : delegate.radius,
-        child: Ink(
-          decoration: BoxDecoration(
-            boxShadow: delegate.boxShadow,
-            color: delegate.backgroundColor,
-            borderRadius: shape == BoxShape.circle ? BorderRadius.circular(100) : delegate.radius,
-            border: delegate.border,
+    return Material(
+      color: Colors.transparent,
+      child: SizedBox.square(
+        dimension: size,
+        child: InkWell(
+          onTap: delegate.onTap,
+          splashColor: delegate.splashColor,
+          highlightColor: delegate.highlightColor,
+          borderRadius: shape == BoxShape.circle ? BorderRadius.circular(100) : delegate.radius,
+          child: Ink(
+            decoration: BoxDecoration(
+              boxShadow: delegate.boxShadow,
+              color: delegate.backgroundColor,
+              borderRadius: shape == BoxShape.circle ? BorderRadius.circular(100) : delegate.radius,
+              border: delegate.border,
+            ),
+            child: Center(child: Icon(icon, color: delegate.iconColor, size: size / 2)),
           ),
-          child: Center(child: Icon(icon, color: delegate.iconColor, size: size / 2)),
         ),
       ),
     );
