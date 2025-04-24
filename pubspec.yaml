@@ -1,0 +1,28 @@
+name: kubsu_design_system
+description: "Kubsu design system"
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: ^3.7.2
+  flutter: ">=1.17.0"
+
+dependencies:
+  collection: ^1.19.1
+  flutter:
+    sdk: flutter
+  reactive_forms: ^17.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  assets:
+    - assets/fonts/
+
+  fonts:
+    - family: KubsuIcons
+      fonts:
+        - asset: assets/fonts/KubsuIcons.ttf
