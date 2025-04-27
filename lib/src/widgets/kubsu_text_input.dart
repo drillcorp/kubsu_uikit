@@ -167,7 +167,6 @@ class KubsuTextInput extends StatelessWidget {
       onEditingComplete: onEditingComplete,
       onSubmitted: onSubmitted,
       onTapOutside: onTapOutside,
-
       maxLines: maxLines,
       magnifierConfiguration: magnifierConfiguration,
       maxLength: maxLength,

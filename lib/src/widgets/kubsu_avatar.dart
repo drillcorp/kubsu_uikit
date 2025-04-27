@@ -30,7 +30,9 @@ class KubsuAvatar extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(1000),
-                  child: DecoratedBox(decoration: BoxDecoration(image: DecorationImage(image: imageProvider))),
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(image: DecorationImage(image: imageProvider, fit: BoxFit.cover)),
+                  ),
                 ),
                 ClipPath(
                   clipper: _RoundedBorderClipper(),

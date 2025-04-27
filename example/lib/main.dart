@@ -94,7 +94,7 @@ class Example extends StatelessWidget {
                 ],
               ),
               KubsuSearchInput(hasError: true, onInit: (controller) {}),
-              KubsuSearchInput(onInit: (controller) {}),
+              KubsuSearchInput(onInit: (controller) {}, readOnly: true),
               const KubsuTextInput(hasError: true, hintText: 'Описание'),
               const KubsuTextInput(hintText: 'Описание'),
               const Row(

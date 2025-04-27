@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:kubsu_design_system/kubsu_design_system.dart';
 
 class KubsuSearchInput extends StatefulWidget {
-  const KubsuSearchInput({super.key, this.onInit, this.hasError = false});
+  const KubsuSearchInput({super.key, this.onInit, this.hasError = false, this.readOnly = false, this.onTap});
 
   final void Function(TextEditingController)? onInit;
   final bool hasError;
+  final VoidCallback? onTap;
+  final bool readOnly;
 
   @override
   State<KubsuSearchInput> createState() => _KubsuSearchInputState();
@@ -45,6 +47,8 @@ class _KubsuSearchInputState extends State<KubsuSearchInput> {
       hintText: 'Поиск...',
       hasError: widget.hasError,
       maxLines: 1,
+      readOnly: widget.readOnly,
+      onTap: (_) => widget.onTap?.call(),
       suffixIconColor: widget.hasError ? context.appColors.iconInputPrimaryError : context.appColors.iconInputPrimary,
       suffixIcon: Padding(
         padding: const EdgeInsets.only(right: 16),
