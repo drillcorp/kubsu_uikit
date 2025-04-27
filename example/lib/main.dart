@@ -127,6 +127,7 @@ class Example extends StatelessWidget {
                   time: '8:30 - 10:00',
                   personalOrGroupChips: const [PersonalOrGroupChip(title: 'Лежнев В.В')],
                 ),
+              KubsuUserCard(name: 'Name Name', faculty: 'Faculty', imagePath: '', isTeacher: true, onTap: () {}),
               const SizedBox(height: 100),
             ],
           ),

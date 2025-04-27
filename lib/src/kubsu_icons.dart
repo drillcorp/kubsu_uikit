@@ -29,4 +29,5 @@ class KubsuIcons {
   static const IconData timer_1 = IconData(0xe814, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData timer = IconData(0xe815, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData trash = IconData(0xe816, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData teacher = IconData(0xe817, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }
