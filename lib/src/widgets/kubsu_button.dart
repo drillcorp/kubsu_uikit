@@ -11,27 +11,24 @@ class KubsuButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: delegate.onTap,
-        borderRadius: delegate.radius,
-        splashColor: delegate.splashColor,
-        highlightColor: delegate.highlightColor,
-        child: Ink(
-          decoration: BoxDecoration(
-            borderRadius: delegate.radius,
-            color: delegate.backgroundColor,
-            border: delegate.border,
-            boxShadow: delegate.boxShadow,
-          ),
-          child: Padding(
-            padding: delegate.padding,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              spacing: 8,
-              children: [if (icon case Widget icon) icon, Text(title, style: delegate.style)],
-            ),
+    return InkWell(
+      onTap: delegate.onTap,
+      borderRadius: delegate.radius,
+      splashColor: delegate.splashColor,
+      highlightColor: delegate.highlightColor,
+      child: Ink(
+        decoration: BoxDecoration(
+          borderRadius: delegate.radius,
+          color: delegate.backgroundColor,
+          border: delegate.border,
+          boxShadow: delegate.boxShadow,
+        ),
+        child: Padding(
+          padding: delegate.padding,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            spacing: 8,
+            children: [if (icon case Widget icon) icon, Text(title, style: delegate.style)],
           ),
         ),
       ),
