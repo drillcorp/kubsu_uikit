@@ -43,9 +43,10 @@ final class PrimaryDelegate extends KubsuButtonDelegate {
   @override
   Color get splashColor => Colors.blueAccent;
 
-  @override
-  List<BoxShadow> get boxShadow =>
-      isDisable ? [] : [BoxShadow(blurRadius: 4, color: context.appColors.surfaceButtonPrimary, offset: Offset(0, 4))];
+  //TODO:
+  // @override
+  // List<BoxShadow> get boxShadow =>
+  //     isDisable ? [] : [BoxShadow(blurRadius: 4, color: context.appColors.surfaceButtonPrimary, offset: Offset(0, 4))];
 
   @override
   Border? get border => null;
