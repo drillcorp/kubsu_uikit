@@ -12,45 +12,53 @@ class KubsuAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CachedNetworkImage(
-      height: size,
-      width: size,
-      imageUrl: path,
-      placeholder: (context, _) {
-        return SizedBox.square(
-          dimension: size,
-          child: DecoratedBox(decoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(1000))),
-        );
-      },
-      imageBuilder:
-          (context, imageProvider) => SizedBox.square(
-            dimension: size,
-            child: Stack(
-              fit: StackFit.expand,
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(1000),
-                  child: DecoratedBox(
-                    decoration: BoxDecoration(image: DecorationImage(image: imageProvider, fit: BoxFit.cover)),
-                  ),
-                ),
-                ClipPath(
-                  clipper: _RoundedBorderClipper(),
-                  child: BackdropFilter(
-                    filter: ui.ImageFilter.blur(sigmaY: 10, sigmaX: 10),
-                    child: const SizedBox.expand(),
-                  ),
-                ),
-              ],
-            ),
-          ),
-      errorWidget:
-          (context, error, _) => SizedBox.square(
+    return Center(
+      child: CachedNetworkImage(
+        height: size,
+        width: size,
+        imageUrl: path,
+        placeholder: (context, _) {
+          return SizedBox.square(
             dimension: size,
             child: DecoratedBox(
-              decoration: BoxDecoration(color: Colors.red, borderRadius: BorderRadius.circular(1000)),
+              decoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(1000)),
             ),
-          ),
+          );
+        },
+        imageBuilder:
+            (context, imageProvider) => ConstrainedBox(
+              constraints: BoxConstraints(maxHeight: size, maxWidth: size, minWidth: size, minHeight: size),
+              child: AspectRatio(
+                aspectRatio: 16 / 9,
+                child: Stack(
+                  alignment: Alignment.center,
+                  fit: StackFit.expand,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(1000),
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(image: DecorationImage(image: imageProvider, fit: BoxFit.cover)),
+                      ),
+                    ),
+                    ClipPath(
+                      clipper: _RoundedBorderClipper(),
+                      child: BackdropFilter(
+                        filter: ui.ImageFilter.blur(sigmaY: 10, sigmaX: 10),
+                        child: const SizedBox.expand(),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+        errorWidget:
+            (context, error, _) => SizedBox.square(
+              dimension: size,
+              child: DecoratedBox(
+                decoration: BoxDecoration(color: Colors.red, borderRadius: BorderRadius.circular(1000)),
+              ),
+            ),
+      ),
     );
   }
 }
