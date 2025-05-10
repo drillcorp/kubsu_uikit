@@ -135,10 +135,11 @@ class Example extends StatelessWidget {
                 onTap: () {},
               ),
               SizedBox(
-                width: 300,
+                height: 200,
                 child: KubsuAvatar(
+                  // borderWidth: 10,
                   size: 200,
-                  path: 'https://cdn.tripster.ru/thumbs2/96e82566-847f-11ef-b246-8e8f6606cbb1.1220x600.jpeg',
+                  imagePath: 'https://cdn.tripster.ru/thumbs2/96e82566-847f-11ef-b246-8e8f6606cbb1.1220x600.jpeg',
                 ),
               ),
               const SizedBox(height: 100),

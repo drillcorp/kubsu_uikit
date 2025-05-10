@@ -37,7 +37,7 @@ class KubsuUserCard extends StatelessWidget {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  KubsuAvatar(path: imagePath),
+                  KubsuAvatar(imagePath: imagePath),
                   const SizedBox(width: 12),
                   Expanded(
                     child: Column(

@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'dart:ui' as ui;
 
 import 'package:cached_network_image/cached_network_image.dart';
@@ -5,10 +6,17 @@ import 'package:flutter/material.dart';
 
 //TODO: Нужно доделать ошибку и заглушку
 class KubsuAvatar extends StatelessWidget {
-  const KubsuAvatar({required this.path, this.size = 48, super.key});
+  const KubsuAvatar({required this.imagePath, this.size = 48, this.borderWidth, super.key});
 
-  final String path;
+  final String imagePath;
+
+  ///double value which point, which rect size avatar will be use
+  ///[size] == 15 the same as width == 15, height == 15
   final double size;
+
+  ///You can set [borderWidth] use hard value, if you don't set value,
+  ///then [borderWidth] will be calculate from 13% of minimal side
+  final double? borderWidth;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +24,7 @@ class KubsuAvatar extends StatelessWidget {
       child: CachedNetworkImage(
         height: size,
         width: size,
-        imageUrl: path,
+        imageUrl: imagePath,
         placeholder: (context, _) {
           return SizedBox.square(
             dimension: size,
@@ -39,7 +47,7 @@ class KubsuAvatar extends StatelessWidget {
                     ),
                   ),
                   ClipPath(
-                    clipper: _RoundedBorderClipper(),
+                    clipper: _RoundedBorderClipper(borderWidth),
                     child: BackdropFilter(
                       filter: ui.ImageFilter.blur(sigmaY: 10, sigmaX: 10),
                       child: const SizedBox.expand(),
@@ -61,10 +69,15 @@ class KubsuAvatar extends StatelessWidget {
 }
 
 final class _RoundedBorderClipper extends CustomClipper<Path> {
+  _RoundedBorderClipper(this._borderWidth);
+
+  final double? _borderWidth;
+
   @override
   Path getClip(Size size) {
     assert(size.height >= size.width || size.width >= size.width);
     final path = Path();
+    final targetSide = min(size.height, size.width);
     final cornerRadius = Radius.circular(size.height);
     final outerRRect = RRect.fromRectAndCorners(
       Rect.fromLTWH(0, 0, size.width, size.height),
@@ -73,7 +86,7 @@ final class _RoundedBorderClipper extends CustomClipper<Path> {
       bottomLeft: cornerRadius,
       bottomRight: cornerRadius,
     );
-    final borderWidth = size.height * 0.13;
+    final borderWidth = _borderWidth ?? targetSide * 0.13;
     final padding = borderWidth / 2;
     final innerRRect = RRect.fromRectAndCorners(
       Rect.fromLTWH(padding, padding, size.width - borderWidth, size.height - borderWidth),
