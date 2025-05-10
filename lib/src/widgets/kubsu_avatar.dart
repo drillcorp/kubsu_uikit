@@ -28,27 +28,24 @@ class KubsuAvatar extends StatelessWidget {
         imageBuilder:
             (context, imageProvider) => ConstrainedBox(
               constraints: BoxConstraints(maxHeight: size, maxWidth: size, minWidth: size, minHeight: size),
-              child: AspectRatio(
-                aspectRatio: 16 / 9,
-                child: Stack(
-                  alignment: Alignment.center,
-                  fit: StackFit.expand,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(1000),
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(image: DecorationImage(image: imageProvider, fit: BoxFit.cover)),
-                      ),
+              child: Stack(
+                alignment: Alignment.center,
+                fit: StackFit.expand,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(1000),
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(image: DecorationImage(image: imageProvider, fit: BoxFit.cover)),
                     ),
-                    ClipPath(
-                      clipper: _RoundedBorderClipper(),
-                      child: BackdropFilter(
-                        filter: ui.ImageFilter.blur(sigmaY: 10, sigmaX: 10),
-                        child: const SizedBox.expand(),
-                      ),
+                  ),
+                  ClipPath(
+                    clipper: _RoundedBorderClipper(),
+                    child: BackdropFilter(
+                      filter: ui.ImageFilter.blur(sigmaY: 10, sigmaX: 10),
+                      child: const SizedBox.expand(),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
         errorWidget:
@@ -66,13 +63,29 @@ class KubsuAvatar extends StatelessWidget {
 final class _RoundedBorderClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
+    assert(size.height >= size.width || size.width >= size.width);
     final path = Path();
-    final outerRect = Rect.fromCircle(center: Offset(size.height / 2, size.width / 2), radius: size.height / 2);
-    final innerRect = Rect.fromCircle(center: Offset(size.height / 2, size.width / 2), radius: size.height / 2.3);
+    final cornerRadius = Radius.circular(size.height);
+    final outerRRect = RRect.fromRectAndCorners(
+      Rect.fromLTWH(0, 0, size.width, size.height),
+      topRight: cornerRadius,
+      topLeft: cornerRadius,
+      bottomLeft: cornerRadius,
+      bottomRight: cornerRadius,
+    );
+    final borderWidth = size.height * 0.13;
+    final padding = borderWidth / 2;
+    final innerRRect = RRect.fromRectAndCorners(
+      Rect.fromLTWH(padding, padding, size.width - borderWidth, size.height - borderWidth),
+      topRight: cornerRadius,
+      topLeft: cornerRadius,
+      bottomLeft: cornerRadius,
+      bottomRight: cornerRadius,
+    );
 
     path
-      ..addOval(outerRect)
-      ..addOval(innerRect)
+      ..addRRect(outerRRect)
+      ..addRRect(innerRRect)
       ..fillType = PathFillType.evenOdd
       ..close();
 

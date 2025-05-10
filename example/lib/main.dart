@@ -127,7 +127,20 @@ class Example extends StatelessWidget {
                   time: '8:30 - 10:00',
                   personalOrGroupChips: const [PersonalOrGroupChip(title: 'Лежнев В.В')],
                 ),
-              KubsuUserCard(name: 'Name Name', faculty: 'Faculty', imagePath: '', isTeacher: true, onTap: () {}),
+              KubsuUserCard(
+                name: 'Name Name',
+                faculty: 'Faculty',
+                imagePath: 'https://cdn.tripster.ru/thumbs2/96e82566-847f-11ef-b246-8e8f6606cbb1.1220x600.jpeg',
+                isTeacher: true,
+                onTap: () {},
+              ),
+              SizedBox(
+                width: 300,
+                child: KubsuAvatar(
+                  size: 200,
+                  path: 'https://cdn.tripster.ru/thumbs2/96e82566-847f-11ef-b246-8e8f6606cbb1.1220x600.jpeg',
+                ),
+              ),
               const SizedBox(height: 100),
             ],
           ),
