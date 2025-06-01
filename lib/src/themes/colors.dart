@@ -22,6 +22,7 @@ class KubsuColors {
   final Color surfaceInputPrimary = const Color(0xFFFCFCFC);
   final Color surfaceInputPrimaryFocused = const Color(0xFFFCFCFC);
   final Color surfaceInputPrimaryError = const Color(0xFFFFE6E5);
+  final Color surfaceChipPrimary = const Color(0xFFF5F8FF);
 
   //TEXT
   final Color textPrimary = const Color(0xFF1F2533);
@@ -29,6 +30,7 @@ class KubsuColors {
   final Color textTertiary = const Color(0xFFAEB5C2);
   final Color textDisabled = const Color(0xFFAEB5C2);
   final Color textAccent = const Color(0xFFFFFFFF);
+  final Color textError = const Color(0xFFEE3733);
   final Color textSecondaryAccent = const Color(0xFF3D7BFF);
   final Color textButtonPrimary = const Color(0xFFFFFFFF);
   final Color textButtonPrimaryDisabled = const Color(0xFFFFFFFF);
