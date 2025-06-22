@@ -4,7 +4,7 @@ class KubsuColors {
   const KubsuColors();
 
   //SURFACE
-  final Color surfacePage = const Color(0xFFE3E3E3);
+  final Color surfacePage = const Color(0xFFF8F9FB);
   final Color surfacePrimary = const Color(0xFFFFFFFF);
   final Color surfaceSecondary = const Color(0xFFFCFCFC);
   final Color surfaceIndicator = const Color(0xFFF79820);
