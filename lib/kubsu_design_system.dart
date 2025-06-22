@@ -1,6 +1,7 @@
 library;
 
 export 'src/kubsu_icons.dart';
+export 'src/themes/colors.dart';
 export 'src/themes/kubsu_theme.dart';
 export 'src/themes/theme_scope.dart';
 export 'src/widgets/kubsu_avatar.dart';
