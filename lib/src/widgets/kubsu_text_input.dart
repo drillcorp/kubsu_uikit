@@ -46,6 +46,7 @@ class KubsuTextInput extends StatelessWidget {
     this.prefixText,
     this.formControlName,
     this.hasError = false,
+    this.keyboardType,
     super.key,
   });
 
@@ -90,6 +91,7 @@ class KubsuTextInput extends StatelessWidget {
   final String? prefixText;
   final String? formControlName;
   final bool hasError;
+  final TextInputType? keyboardType;
 
   @override
   Widget build(BuildContext context) {
@@ -173,6 +175,7 @@ class KubsuTextInput extends StatelessWidget {
       maxLengthEnforcement: maxLengthEnforcement,
       obscureText: obscureText,
       obscuringCharacter: obscuringCharacter,
+      keyboardType: keyboardType,
 
       controller: controller,
       formControl: formControl ?? FormControl(),
