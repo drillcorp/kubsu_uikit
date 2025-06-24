@@ -22,6 +22,7 @@ class KubsuColors {
   final Color surfaceInputPrimary = const Color(0xFFFCFCFC);
   final Color surfaceInputPrimaryFocused = const Color(0xFFFCFCFC);
   final Color surfaceInputPrimaryError = const Color(0xFFFFE6E5);
+  final Color surfaceChipPrimary = const Color(0xFFF5F8FF);
 
   //TEXT
   final Color textPrimary = const Color(0xFF1F2533);
